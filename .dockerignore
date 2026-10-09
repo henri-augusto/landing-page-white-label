@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+.git
+.github
+.vercel
+design
+agent-transcripts
+*.md
+.env*
+npm-debug.log*
+.DS_Store
+coverage
+Dockerfile
+docker-compose.yml
+.dockerignore
+.design

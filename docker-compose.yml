@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: landing-page-white-label
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      HOSTNAME: "0.0.0.0"
+    restart: unless-stopped

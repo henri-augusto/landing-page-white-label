@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Valores padrão; o layout sobrescreve com as cores do preset ativo. */
+:root {
+  --brand-background: #f3f6f4;
+  --brand-surface: #e5f0eb;
+  --brand-foreground: #102421;
+  --brand-muted: #5c6b66;
+  --brand-line: #d3e0da;
+  --brand-accent: #0f6e68;
+  --brand-accent-foreground: #f4fbf8;
+}
+
+@theme inline {
+  --color-background: var(--brand-background);
+  --color-surface: var(--brand-surface);
+  --color-foreground: var(--brand-foreground);
+  --color-muted: var(--brand-muted);
+  --color-line: var(--brand-line);
+  --color-accent: var(--brand-accent);
+  --color-accent-foreground: var(--brand-accent-foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-instrument-serif);
+
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-rise: rise 0.9s var(--ease-fluid) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes whatsapp-pulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--reveal-step, 0) * 1%) entry calc(45% + var(--reveal-step, 0) * 1%);
+    }
+  }
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-rise {
+    animation: none;
+  }
+}
